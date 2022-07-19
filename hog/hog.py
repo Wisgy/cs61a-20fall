@@ -433,28 +433,7 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-
-    # return extra_turn_strategy(score, opponent_score)
-    f_dice = make_averaged(roll_dice)
-    print('DEBUG', score, opponent_score)
-    if extra_turn(score + free_bacon(opponent_score), opponent_score):
-        return 0
-    elif opponent_score - score - free_bacon(opponent_score) > 0:
-        return extra_turn_strategy(score, opponent_score, opponent_score - score)
-    else:
-
-        score1 = f_dice(1)
-        score2 = f_dice(2)
-        score3 = f_dice(3)
-        max_score = max(score1, score2, score3)
-        if max_score == score1:
-            n = 1
-        elif max_score == score2:
-            n = 2
-        else:
-            n = 3
-        print('DEBUG', score, opponent_score, extra_turn_strategy(score, opponent_score, max_score, n))
-        return extra_turn_strategy(score, opponent_score, max_score, n)
+    return extra_turn_strategy(score, opponent_score)
     # END PROBLEM 12
 
 ##########################
