@@ -144,28 +144,14 @@ def count_coins(total):
     True
     """
     "*** YOUR CODE HERE ***"
-    def helper(next_total, largest_coin):
-        if next_total < 0:
+    def helper(next_total, largest_coin, last_largest_coin):
+        if largest_coin == None or last_largest_coin < largest_coin or next_total < 0 :
             return 0
-        elif next_total == 0:
+        elif next_total == 0 or last_largest_coin == 1:
             return 1
-        elif largest_coin == 1:
-            return 1
-        elif largest_coin > next_total :
-            if largest_coin > 10:
-                return helper(next_total, 10)
-            elif largest_coin > 5:
-                return helper(next_total, 5)
-            else:
-                return helper(next_total, 1)
         else:
-            if largest_coin > 10:
-                return helper(next_total - largest_coin, largest_coin) + helper(next_total, 10)
-            elif largest_coin > 5:
-                return helper(next_total - largest_coin, largest_coin) + helper(next_total, 5)
-            else:
-                return helper(next_total - largest_coin, largest_coin) + helper(next_total, 1)
-    return helper(total, 25)
+            return helper(next_total - largest_coin, 1, largest_coin) + helper(next_total, next_largest_coin(largest_coin), last_largest_coin)
+    return helper(total, 1,25)
 
 from operator import sub, mul
 
